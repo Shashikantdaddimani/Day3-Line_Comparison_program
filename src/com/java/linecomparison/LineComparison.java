@@ -1,56 +1,61 @@
 package com.java.linecomparison;
-
+/**
+ * imports the scanner class of the java.utill package
+ */
 import java.util.Scanner;
 
-public class LineComparison {
-	 void lengthCalculate() {
-	        Scanner sc = new Scanner(System.in);
+public class LineComparison 
+{
+	/*
+	 * Declring variable
+	 */
+	static double lengthOfLineFirst, lengthOfLineSecond, lengthOfLine;
+	static int x1, x2, y1, y2, value;
+	/*
+	 * logic for finding coridinates using scanner object
+	 */
+	 void  coordinates() 
+	 {
+		 	/*
+			 * Taking user input using Scanner object
+			 */
+	        Scanner input = new Scanner(System.in);
 	        System.out.println("Enter x1 co-ordinate : ");
-	        int x1 = sc.nextInt();
+	        int x1 = input.nextInt();
 	        System.out.println("Enter x2 co-ordinate : ");
-	        int x2 = sc.nextInt();
+	        int x2 = input.nextInt();
 	        System.out.println("Enter y1 co-ordinate : ");
-	        int y1 = sc.nextInt();
+	        int y1 = input.nextInt();
 	        System.out.println("Enter y2 co-ordinate : ");
-	        int y2 = sc.nextInt();
+	        int y2 = input.nextInt();
 
-	        Double lenOfLineFirst = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
-	        System.out.println("Length of first line is " + lenOfLineFirst);
-	        
-	        System.out.println("Calculate length of second line");
-	        System.out.print("Enter x3 co-ordinate: ");
-	        int x3 = sc.nextInt();
-	        System.out.print("Enter x4 co-ordinate: ");
-	        int x4 = sc.nextInt();
-	        System.out.print("Enter y3 co-ordinate: ");
-	        int y3 = sc.nextInt();
-	        System.out.print("Enter y4 co-ordinate: ");
-	        int y4 = sc.nextInt();
-
-	        Double lenOfLineSecond = Math.sqrt(Math.pow((x4 - x3), 2) + Math.pow((y4 - y3), 2));
-	        System.out.println("Length of second line is " + lenOfLineSecond);
-
-	        if (lenOfLineFirst.equals(lenOfLineSecond))
-	            System.out.println("Lines are equal");
-	        else
-	            System.out.println("Lines are not equal");
-	        
-	        
-	     // Check line comparison greater or less
-	        int value = lenOfLineFirst.compareTo(lenOfLineSecond);
-	        if (value < 0) {
-	            System.out.println("Length of first line is less than second line");
-	        } else if (value > 0) {
-	            System.out.println("Length of second line is greater than first line");
-	        } else {
-	            System.out.println("Both lines are equal");
-	    }
+	        lengthOfLine = Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));        
 	 }
-	
-	
-	public static void main(String[] args) {
-		System.out.println("Welcome to Line Comparison Program");
-		LineComparison lc = new LineComparison();
-		lc.lengthCalculate();
-	}
+	 	void getLength() 
+	 	{
+			coordinates();
+			lengthOfLineFirst = lengthOfLine;
+			System.out.println("Enter Values Again for Second Line: ");
+			coordinates();
+			lengthOfLineSecond = lengthOfLine;
+			System.out.println("Length of Line1: " + lengthOfLineFirst);
+			System.out.println("Length of Line2: " + lengthOfLineSecond);
+		}
+		/*
+		 * logic for checking conditions using if-else statements
+		 */
+	 	void compareLines()
+		{
+			
+			if(lengthOfLineFirst == lengthOfLineSecond)
+				System.out.println("both lines are Equal.");
+			
+			else if(lengthOfLineFirst > lengthOfLineSecond)
+				System.out.println("Line1 is greater than Line2.");
+			
+			else
+				System.out.println("Line1 is smaller than Line2.");
+		}
+
+	 	
 }
